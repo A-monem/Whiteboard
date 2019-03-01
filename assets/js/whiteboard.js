@@ -8,6 +8,38 @@ var selDay = document.querySelector("#day-dropDown")
 var idPart1 = document.getElementById("part1")
 var idPart2 = document.getElementById("part2")
 var idPart3 = document.getElementById("part3")
+var listDay = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+var listMarket = ["TCN","GTV","QTQ","NWS","STW","NTD"];
+
+window.onload = function(){
+    // run the function add listener
+    addListener();
+    // load json file
+    xhttp.open("GET", "IDs.json", true);
+    xhttp.send();
+};
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       var response = JSON.parse(xhttp.responseText);
+       loadJson(response);
+    };
+};
+
+function loadJson(response){
+    for (var i=0; i<listMarket.length; i++){
+        var market = listMarket[i];
+        for (var j=0; j<listDay.length; j++){
+            var day = listDay[j];
+            var listOfIDs = document.getElementById(`${market}-${day}`);
+            var materialID = response[market][day][0]; //fix the array issue
+            console.log(materialID)
+            createLi(listOfIDs, materialID); //fix undefined
+        };
+    };
+};
 
 // add a listener to remove li when clicking the trash icon
 var addListener = function () {
@@ -22,9 +54,6 @@ var addListener = function () {
         });
     };
 };
-
-// run the function add listener
-addListener();
 
 // open add-id window
 btnOpen.addEventListener("click", function(){ 

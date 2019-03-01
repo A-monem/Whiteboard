@@ -1,0 +1,61 @@
+{
+    "TCN":{
+        "Monday":["TEST_1_A", "TEST_2_A"],
+        "Tuesday":[],
+        "Wednesday":[],
+        "Thursday":[],
+        "Friday":["TEST_3_A"],
+        "Saturday":[],
+        "Sunday":[]
+    },
+
+    "GTV":{
+        "Monday":["TEST_1_A", "TEST_2_A"],
+        "Tuesday":[],
+        "Wednesday":[],
+        "Thursday":[],
+        "Friday":["TEST_3_A"],
+        "Saturday":[],
+        "Sunday":[]
+    },
+
+    "QTQ":{
+        "Monday":["TEST_1_A", "TEST_2_A"],
+        "Tuesday":[],
+        "Wednesday":[],
+        "Thursday":[],
+        "Friday":["TEST_3_A"],
+        "Saturday":[],
+        "Sunday":[]
+    },
+
+    "NWS":{
+        "Monday":["TEST_1_A", "TEST_2_A"],
+        "Tuesday":[],
+        "Wednesday":[],
+        "Thursday":[],
+        "Friday":["TEST_3_A"],
+        "Saturday":[],
+        "Sunday":[]
+    },
+
+    "STW":{
+        "Monday":["TEST_1_A", "TEST_2_A"],
+        "Tuesday":[],
+        "Wednesday":[],
+        "Thursday":[],
+        "Friday":["TEST_3_A"],
+        "Saturday":[],
+        "Sunday":[]
+    },
+
+    "NTD":{
+        "Monday":["TEST_1_A", "TEST_2_A"],
+        "Tuesday":[],
+        "Wednesday":[],
+        "Thursday":[],
+        "Friday":["TEST_3_A"],
+        "Saturday":[],
+        "Sunday":[]
+    }
+}
