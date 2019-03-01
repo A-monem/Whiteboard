@@ -1,0 +1,168 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background: #CC95C0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* ******************************************************************************************* */
+
+/* logo & icon */
+.logo-icon{
+    width: 90vw;
+    height: 10vh;
+    position: relative;
+}
+
+.logo-icon img{
+    width: 6vw;
+    height: 7vh;
+    position: absolute;
+    top: 20%;
+    left: 0;
+}
+
+.logo-icon i{
+position: absolute;
+top: 40%;
+right: 0;
+color: rgb(224, 81, 81);
+}
+
+/* ******************************************************************************************* */
+
+/* table */
+td, table, th{
+    border-collapse: collapse;
+    border: 2px solid white;
+    color: black;
+}
+
+table{
+    margin-top: 2vh;
+    width: 90vw;
+}
+
+.row-header th{
+    padding: 2vh;
+}
+
+.day{
+    width: 11.5vw;
+    vertical-align: top;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li{
+    vertical-align: top;
+    opacity: 1;
+    transition: 0.2s linear;
+}
+
+li:nth-child(2n+1){
+    background: #d9dbdb;
+}
+
+li:nth-child(2n){
+    background: #b8bbbb;
+}
+
+.trash i{
+    background: red;
+    color: white;
+    line-height: 3vh; 
+    text-align: center;
+    width: 0;
+    opacity: 0;
+    transition: 0.2s linear;
+}
+
+li:hover i{
+    width: 1.5vw;
+    opacity: 1;
+}
+
+.fadeOut{
+    opacity: 0;
+}
+
+
+/* ******************************************************************************************* */
+
+/* Add-ID */
+.modal{
+    position: fixed;
+    display: none;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.add-id{
+    margin: 8vh auto;
+    width: 30vw;
+    height: 30vh;
+    background:#CC95C0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+}
+
+.market-day{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.add-id select{
+    width: 6vw;
+    height: 4vh;
+    font-weight: bold;
+} 
+
+.id-addId{
+    display: flex;
+    width: 60%;
+    height: 20%;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.id-addId input{
+    width: 2vw;
+    height: 3vh;
+    font-weight: bold;
+}
+
+.id-addId input:first-of-type{
+    width: 6vw;
+}
+
+#button-addId, #button-cancel{
+    padding: 0.75vh 4vw;
+    font-weight: bold;
+}
+

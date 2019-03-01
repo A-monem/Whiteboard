@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Whiteboard</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/whiteboard.css">
+</head>
+
+<body>
+    <div class="logo-icon">
+        <img src="assets/imgs/GO-logo.png" alt="GO-logo">
+        <i class="fas fa-plus-circle fa-2x"></i>
+    </div>
+    <div class="modal">
+        <div class="add-id">
+            <div class="market-day">
+                <div class="market-addId">
+                    <label for="market">Market</label>
+                    <select name="market" id="market-dropDown">
+                        <option value="TCN">TCN</option>
+                        <option value="GTV">GTV</option>
+                        <option value="GTV">QTQ</option>
+                        <option value="GTV">NWS</option>
+                        <option value="GTV">STW</option>
+                        <option value="GTV">NTD</option>
+                    </select>
+                </div>
+                <div class="day-addId">
+                    <label for="day">Day</label>
+                    <select name="day" id="day-dropDown">
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                </div>
+            </div>
+            <div class="id-addId">
+                <label for="id">Material ID</label>
+                <input type="text" id="part1">
+                <p>_</p>
+                <input type="number" id="part2">
+                <p>_</p>
+                <input type="text" id="part3">
+            </div>
+            <div>
+                <button id="button-addId">Add ID</button>
+                <button id="button-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <thead class="row-header">
+            <th>Go!</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="column-header">TCN</th>
+                <td class="day">
+                    <ul id="TCN-Monday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_1_A</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_1_A</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_1_A</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="TCN-Tuesday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="TCN-Wednesday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="TCN-Thursday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="TCN-Friday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="TCN-Saturday">
+
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="TCN-Sunday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_7_A</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="column-header">GTV</th>
+                <td class="day">
+                    <ul id="GTV-Monday">
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="GTV-Tuesday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="GTV-Wednesday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="GTV-Thursday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="GTV-Friday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="GTV-Saturday">
+
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul id="GTV-Sunday">
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_7_A</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="column-header">QTQ</th>
+                <td class="day">
+                    <ul>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_7_A</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="cloumn-header">NWS</th>
+                <td class="day">
+                    <ul>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_7_A</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="cloumn-header">STW</th>
+                <td class="day">
+                    <ul>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_7_A</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="cloumn-header">NTD</th>
+                <td class="day">
+                    <ul>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_B</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_2_A</li>
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+
+                    </ul>
+                </td>
+                <td class="day">
+                    <ul>
+                        <li><span class="trash"><i class="fas fa-trash-alt"></i></span> TEST_7_A</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="assets/js/whiteboard.js"></script>
+</body>
+
+</html>
