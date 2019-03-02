@@ -34,9 +34,12 @@ function loadJson(response){
         for (var j=0; j<listDay.length; j++){
             var day = listDay[j];
             var listOfIDs = document.getElementById(`${market}-${day}`);
-            var materialID = response[market][day][0]; //fix the array issue
-            console.log(materialID)
-            createLi(listOfIDs, materialID); //fix undefined
+            var materialID = response[market][day].forEach(element => {
+                if (typeof(materialID) !== "undefined"){
+                    createLi(listOfIDs, materialID); 
+                };
+            });; //fix the array issue
+
         };
     };
 };
