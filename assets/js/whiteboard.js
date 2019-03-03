@@ -151,11 +151,11 @@ function postJson() {
     var response = { name: "Hello World"}
 
     var xhttpPost = new XMLHttpRequest();  
-    xhttpPost.open("POST", "https://a-monem.github.io/Whiteboard/IDs.json", true);
-    xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
-    xhttpPost.setRequestHeader("Content-type", "application/json");
-    xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
-    xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
+    xhttpPost.open("POST", "./Jtest.json", true);
+    // xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
+    // xhttpPost.setRequestHeader("Content-type", "application/json");
+    // xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
+    // xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
     xhttpPost.send(response);
 
     xhttpPost.onreadystatechange = function () {
@@ -165,16 +165,6 @@ function postJson() {
         
     };
 
-
-    // fetch('http://127.0.0.1:5500/test.json', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       name: 'Hubot'
-    //     })
-    //   })
 
 
 
