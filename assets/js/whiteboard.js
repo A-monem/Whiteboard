@@ -13,7 +13,7 @@ var listMarket = ["TCN", "GTV", "QTQ", "NWS", "STW", "NTD"];
 
 window.onload = function () {
     // load json file
-    xhttp.open("GET", "https://A-monem.github.io/Whiteboard/IDs.json", true);
+    xhttp.open("GET", "IDs.json", true);
     xhttp.send();
 };
 
@@ -24,6 +24,7 @@ xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
         let response = JSON.parse(xhttp.responseText);
+        console.log(response)
         loadJson(response);
     };
 };
@@ -148,15 +149,19 @@ function postJson() {
     // console.log(response);
 
     var response = { name: "Hello World"}
+
     var xhttpPost = new XMLHttpRequest();  
-    xhttpPost.open("PUT", "test.json", true);
+    xhttpPost.open("POST", "https://a-monem.github.io/Whiteboard/IDs.json", true);
+    xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
     xhttpPost.setRequestHeader("Content-type", "application/json");
+    xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
+    xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
     xhttpPost.send(response);
 
     xhttpPost.onreadystatechange = function () {
     
         console.log(response); 
-        response = JSON.stringify(response)
+        response = JSON.stringify(response);
         
     };
 
