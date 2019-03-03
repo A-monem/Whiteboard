@@ -152,9 +152,9 @@ function postJson() {
 
     var xhttpPost = new XMLHttpRequest();  
     xhttpPost.open("POST", "./Jtest.json", true);
-    // xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
-    // xhttpPost.setRequestHeader("Content-type", "application/json");
-    // xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
+    xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
+    xhttpPost.setRequestHeader("Content-type", "application/json");
+    xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
     // xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
     xhttpPost.send(response);
 
