@@ -11,7 +11,7 @@
 
     "GTV":{
         "Monday":["TEST_1_A", "TEST_2_A"],
-        "Tuesday":[],
+        "Tuesday":["TEST_5_C"],
         "Wednesday":[],
         "Thursday":[],
         "Friday":["TEST_3_A"],

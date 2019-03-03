@@ -1,48 +1,55 @@
-
+//declare variables
 var btnOpen = document.querySelector(".fa-plus-circle")
 var modal = document.querySelector(".modal")
 var btnCancel = document.querySelector("#button-cancel")
 var btnAdd = document.querySelector("#button-addId")
 var selMarket = document.querySelector("#market-dropDown")
-var selDay = document.querySelector("#day-dropDown")
+var selDay = document.getElementById("day-dropDown")
 var idPart1 = document.getElementById("part1")
 var idPart2 = document.getElementById("part2")
 var idPart3 = document.getElementById("part3")
-var listDay = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-var listMarket = ["TCN","GTV","QTQ","NWS","STW","NTD"];
+var listDay = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+var listMarket = ["TCN", "GTV", "QTQ", "NWS", "STW", "NTD"];
 
-window.onload = function(){
-    // run the function add listener
-    addListener();
+window.onload = function () {
     // load json file
-    xhttp.open("GET", "IDs.json", true);
+    xhttp.open("GET", "https://A-monem.github.io/Whiteboard/IDs.json", true);
     xhttp.send();
 };
 
+
+//establish an http connection
 var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
+xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
-       var response = JSON.parse(xhttp.responseText);
-       loadJson(response);
+        // Typical action to be performed when the document is ready:
+        let response = JSON.parse(xhttp.responseText);
+        loadJson(response);
     };
 };
 
-function loadJson(response){
-    for (var i=0; i<listMarket.length; i++){
-        var market = listMarket[i];
-        for (var j=0; j<listDay.length; j++){
-            var day = listDay[j];
-            var listOfIDs = document.getElementById(`${market}-${day}`);
-            var materialID = response[market][day].forEach(element => {
-                if (typeof(materialID) !== "undefined"){
-                    createLi(listOfIDs, materialID); 
+//function to load IDs from a json file
+function loadJson(response) {
+    //loop through markets
+    for (var i = 0; i < listMarket.length; i++) {
+        let market = listMarket[i];
+        //loop through days of the week
+        for (var j = 0; j < listDay.length; j++) {
+            let day = listDay[j];
+            let listOfIDs = document.getElementById(`${market}-${day}`);
+            let materialID = response[market][day];
+            //loop through IDs in each day
+            for (var k = 0; k < materialID.length; k++) {
+                if (typeof (materialID[k]) !== "undefined") {
+                    createLi(listOfIDs, materialID[k]);
                 };
-            });; //fix the array issue
-
+            };
         };
     };
+    // run the function add listener
+    addListener();
 };
+
 
 // add a listener to remove li when clicking the trash icon
 var addListener = function () {
@@ -59,34 +66,36 @@ var addListener = function () {
 };
 
 // open add-id window
-btnOpen.addEventListener("click", function(){ 
+btnOpen.addEventListener("click", function () {
     modal.style.display = "block";
 })
 
 
 // close add-id widnow
-btnCancel.addEventListener("click", function(){
+btnCancel.addEventListener("click", function () {
     resetValues()
     modal.style.display = "none";
-})
+});
 
 
 // 
-btnAdd.addEventListener("click", function(){
-    if(idPart1.value !== "" && idPart2.value !== "" && idPart2.value !== "" ){
-        var materialID = ` ${idPart1.value.toUpperCase()}_${idPart2.value}_${idPart3.value.toUpperCase()}`;
-        var listOfIDs = document.getElementById(`${selMarket.value}-${selDay.value}`);
-        createLi(listOfIDs, materialID);
+btnAdd.addEventListener("click", function () {
+    let day = selDay.value;
+    let market = selMarket.value;
+    if (idPart1.value !== "" && idPart2.value !== "" && idPart2.value !== "") {
+        let materialID = `${idPart1.value.toUpperCase()}_${idPart2.value}_${idPart3.value.toUpperCase()}`;
+        let marketDay = document.getElementById(`${market}-${day}`);
+        createLi(marketDay, materialID);
         addListener();
         resetValues();
         modal.style.display = "none";
     }
-    else{
+    else {
         alert("Please insert a valid ID");
     };
 });
 
-function createLi(parent, id){
+function createLi(parent, id) {
     var node = document.createElement("li");
     var sp = document.createElement("span");
     var ico = document.createElement("i");
@@ -97,13 +106,71 @@ function createLi(parent, id){
     sp.appendChild(ico);
     node.appendChild(sp);
     node.appendChild(textnode);
-    parent.appendChild(node) ;
+    parent.appendChild(node);
 }
 
-function resetValues(){
+function resetValues() {
     idPart1.value = "";
     idPart2.value = "";
     idPart3.value = "";
     selMarket.selectedIndex = 0;
     selDay.selectedIndex = 0;
 }
+
+
+
+
+//------------------------------------------------------------------------------------------//
+
+
+// var fs = require('fs');
+// var words = fs.readFileSync('IDs.json');
+// console.log(words)
+
+function postJson() {
+    // var data = new Object();
+
+
+    // response[selMarket] = [selDay];
+    // response[selMarket][selDay] = id;
+    // console.log(response);
+    // response = JSON.stringify(response);
+
+    // console.log(response);
+
+
+  
+
+    // Saturday = [`${id}`]
+    // response.TCN = {Saturday};
+    // console.log(response);
+    // response = JSON.stringify(response);
+    // console.log(response);
+
+    var response = { name: "Hello World"}
+    var xhttpPost = new XMLHttpRequest();  
+    xhttpPost.open("PUT", "test.json", true);
+    xhttpPost.setRequestHeader("Content-type", "application/json");
+    xhttpPost.send(response);
+
+    xhttpPost.onreadystatechange = function () {
+    
+        console.log(response); 
+        response = JSON.stringify(response)
+        
+    };
+
+
+    // fetch('http://127.0.0.1:5500/test.json', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       name: 'Hubot'
+    //     })
+    //   })
+
+
+
+};
