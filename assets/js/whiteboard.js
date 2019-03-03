@@ -148,15 +148,15 @@ function postJson() {
     // response = JSON.stringify(response);
     // console.log(response);
 
-    var response = { "name": "Hello World"}
+    // var response = { "name": "Hello World"}
 
-    var xhttpPost = new XMLHttpRequest();  
-    xhttpPost.open("POST", "./Jtest.json", true);
-    xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
-    xhttpPost.setRequestHeader("Content-type", "application/json");
-    xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
-    // xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
-    xhttpPost.send(response);
+    // var xhttpPost = new XMLHttpRequest();  
+    // xhttpPost.open("POST", "./Jtest.json", true);
+    // xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
+    // xhttpPost.setRequestHeader("Content-type", "application/json");
+    // xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
+    // // xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
+    // xhttpPost.send(response);
 
     // xhttpPost.onreadystatechange = function () {
     
@@ -164,4 +164,21 @@ function postJson() {
     //     response = JSON.stringify(response);
         
     // };
+
+
+
+
+    xhr = new XMLHttpRequest();
+    var url = "./Jtest.json";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+            console.log(json)
+        }
+    }
+    var data = JSON.stringify({ "email": "tomb@raider.com", "name": "LaraCroft" });
+    xhr.send(data);
+
 };
