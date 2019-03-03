@@ -13,7 +13,7 @@ var listMarket = ["TCN", "GTV", "QTQ", "NWS", "STW", "NTD"];
 
 window.onload = function () {
     // load json file
-    xhttp.open("GET", "IDs.json", true);
+    xhttp.open("GET", "./IDs.json", true);
     xhttp.send();
 };
 
