@@ -148,7 +148,7 @@ function postJson() {
     // response = JSON.stringify(response);
     // console.log(response);
 
-    var response = { name: "Hello World"}
+    var response = { "name": "Hello World"}
 
     var xhttpPost = new XMLHttpRequest();  
     xhttpPost.open("POST", "./Jtest.json", true);
@@ -158,12 +158,12 @@ function postJson() {
     // xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
     xhttpPost.send(response);
 
-    xhttpPost.onreadystatechange = function () {
+    // xhttpPost.onreadystatechange = function () {
     
-        console.log(response); 
-        response = JSON.stringify(response);
+    //     console.log(response); 
+    //     response = JSON.stringify(response);
         
-    };
+    // };
 
 
 
