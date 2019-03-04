@@ -170,7 +170,7 @@ function postJson() {
 
     xhr = new XMLHttpRequest();
     var url = "./Jtest.json";
-    xhr.open("PUT", url, true);
+    xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
