@@ -1,14 +1,14 @@
 //declare variables
-var btnOpen = document.querySelector(".fa-plus-circle")
-var modal = document.querySelector(".modal")
-var btnCancel = document.querySelector("#button-cancel")
-var btnAdd = document.querySelector("#button-addId")
-var selMarket = document.querySelector("#market-dropDown")
-var selDay = document.getElementById("day-dropDown")
-var idPart1 = document.getElementById("part1")
-var idPart2 = document.getElementById("part2")
-var idPart3 = document.getElementById("part3")
-var listDay = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+var btnOpen = document.querySelector(".fa-plus-circle");
+var modal = document.querySelector(".modal");
+var btnCancel = document.querySelector("#button-cancel");
+var btnAdd = document.querySelector("#button-addId");
+var selMarket = document.querySelector("#market-dropDown");
+var selDay = document.getElementById("day-dropDown");
+var idPart1 = document.getElementById("part1");
+var idPart2 = document.getElementById("part2");
+var idPart3 = document.getElementById("part3");
+var listDay = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 var listMarket = ["TCN", "GTV", "QTQ", "NWS", "STW", "NTD"];
 
 window.onload = function () {
@@ -17,14 +17,12 @@ window.onload = function () {
     xhttp.send();
 };
 
-
 //establish an http connection
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
         let response = JSON.parse(xhttp.responseText);
-        console.log(response)
         loadJson(response);
     };
 };
@@ -54,9 +52,15 @@ function loadJson(response) {
 
 // add a listener to remove li when clicking the trash icon
 var addListener = function () {
-    var btnDelete = document.getElementsByClassName("trash")
+    var btnDelete = document.getElementsByClassName("trash");
     for (var i = 0; i < btnDelete.length; i++) {
         btnDelete[i].addEventListener("click", function () {
+            var li_ID = this.parentNode.textContent; //get-id
+            marketPattern = /^\w{3}/; //regular expression to extract market
+            dayPattern = /\w*$/; //regular expression to extract day
+            var li_market = marketPattern.exec(this.parentNode.parentNode.id)[0];
+            var li_day = dayPattern.exec(this.parentNode.parentNode.id)[0];
+            deleteJson(li_market, li_day, li_ID);
             this.parentNode.classList.add("fadeOut");
             let _this = this;
             setTimeout(function () {
@@ -89,6 +93,7 @@ btnAdd.addEventListener("click", function () {
         createLi(marketDay, materialID);
         addListener();
         resetValues();
+        postJson(market, day, materialID);
         modal.style.display = "none";
     }
     else {
@@ -119,66 +124,22 @@ function resetValues() {
 }
 
 
-
-
-//------------------------------------------------------------------------------------------//
-
-
-// var fs = require('fs');
-// var words = fs.readFileSync('IDs.json');
-// console.log(words)
-
-function postJson() {
-    // var data = new Object();
-
-
-    // response[selMarket] = [selDay];
-    // response[selMarket][selDay] = id;
-    // console.log(response);
-    // response = JSON.stringify(response);
-
-    // console.log(response);
-
-
-  
-
-    // Saturday = [`${id}`]
-    // response.TCN = {Saturday};
-    // console.log(response);
-    // response = JSON.stringify(response);
-    // console.log(response);
-
-    // var response = { "name": "Hello World"}
-
-    // var xhttpPost = new XMLHttpRequest();  
-    // xhttpPost.open("POST", "./Jtest.json", true);
-    // xhttpPost.setRequestHeader('Access-Control-Allow-Headers', '*');
-    // xhttpPost.setRequestHeader("Content-type", "application/json");
-    // xhttpPost.setRequestHeader('Access-Control-Allow-Methods', "POST");
-    // // xhttpPost.setRequestHeader('Access-Control-Request-Origin', "https://a-monem.github.io/Whiteboard/IDs.json");
-    // xhttpPost.send(response);
-
-    // xhttpPost.onreadystatechange = function () {
-    
-    //     console.log(response); 
-    //     response = JSON.stringify(response);
-        
-    // };
-
-
-
-
+function postJson(market, day, id) {
     xhr = new XMLHttpRequest();
-    var url = "./Jtest.json";
+    var url = "./addID";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var json = JSON.parse(xhr.responseText);
-            console.log(json)
-        }
-    }
-    var data = JSON.stringify({ "email": "tomb@raider.com", "name": "LaraCroft" });
+    var data = JSON.stringify({ market: market, day: day, id: id});
+    xhr.send(data);
+};
+
+function deleteJson(market, day, id) {
+
+    xhr = new XMLHttpRequest();
+    var url = "./deleteID";
+    xhr.open("DELETE", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    var data = JSON.stringify({ market: market, day: day, id: id});
     xhr.send(data);
 
 };
