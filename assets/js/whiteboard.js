@@ -34,46 +34,55 @@ function loadJson(response) {
         let market = listMarket[i];
         //loop through days of the week
         for (var j = 0; j < listDay.length; j++) {
-            let day = listDay[j];
-            let listOfIDs = document.getElementById(`${market}-${day}`);
-            let materialID = response[market][day];
+            let day = listDay[j]; 
+            let ulOfIDs = document.getElementById(`${market}-${day}`);//grab ul of "market-day"
+            let materialID = response[market][day]; //extract IDs from the http GET response
             //loop through IDs in each day
-            
             if (materialID == ""){
-                listOfIDs.parentNode.classList.add("clear");
-                listOfIDs.parentNode.addEventListener("click", function(){
-                    var x = this.firstChild.nextSibling;
-                    x.classList.toggle("showTick");
-                })
+                addClearTick(ulOfIDs, true); //call addTickIcon function 
             }
             for (var k = 0; k < materialID.length; k++) {
                 if (typeof(materialID[k]) !== "undefined") {
-                    createLi(listOfIDs, materialID[k]);
+                    createLi(ulOfIDs, materialID[k]);
                 }
             };
         };
     };
-    // run the function add listener
-    addListener();
+    addListener(); // call the function add listener
 };
 
-// add a listener to remove li when clicking the trash icon
+function addClearTick(ulObject, bool){
+    let td = ulObject.parentNode;
+    let sp = ulObject.parentNode.firstChild.nextSibling;
+    if (bool === true){
+        td.classList.add("clear"); // add "clear" class to td
+        sp.classList.add("show"); //add "show" class to span   
+    }else if (bool === false){
+        td.classList.remove("clear"); // remove "clear" class to td
+        sp.classList.remove("show"); //remove "show" class to span   
+    }
+}
+
+
+// add a listener to the trash span to remove li when clicking at the icon
 var addListener = function () {
-    var btnDelete = document.getElementsByClassName("trash");
+    var btnDelete = document.getElementsByClassName("trash"); //grab all trash icons
+    //loop over trash spans to add a listener
     for (var i = 0; i < btnDelete.length; i++) {
         btnDelete[i].addEventListener("click", function () {
-            var li_ID = this.parentNode.textContent; //get-id
+            var li_ID = this.parentNode.textContent; //get-id from parent li
             marketPattern = /^\w{3}/; //regular expression to extract market
             dayPattern = /\w*$/; //regular expression to extract day
             var li_market = marketPattern.exec(this.parentNode.parentNode.id)[0];
             var li_day = dayPattern.exec(this.parentNode.parentNode.id)[0];
-            deleteJson(li_market, li_day, li_ID);
+            deleteJson(li_market, li_day, li_ID); //delete id from IDs.json
             this.parentNode.classList.add("fadeOut");
             let _this = this;
             setTimeout(function () {
+                //remove li from parent ul
                 _this.parentNode.parentNode.removeChild(_this.parentNode);
             }, 200)
-            location.reload();
+            location.reload();//reload page to apply "clear" class from JSON
         });
     };
 };
@@ -97,8 +106,8 @@ btnAdd.addEventListener("click", function () {
     let market = selMarket.value;
     if (idPart1.value !== "" && idPart2.value !== "" && idPart2.value !== "") {
         let materialID = `${idPart1.value.toUpperCase()}_${idPart2.value}_${idPart3.value.toUpperCase()}`;
-        let marketDay = document.getElementById(`${market}-${day}`);
-        marketDay.parentNode.classList.remove("clear"); //remove the clear class 
+        let marketDay = document.getElementById(`${market}-${day}`); // grab ul of markte-day
+        addClearTick(marketDay, false); //call addTickIcon function 
         createLi(marketDay, materialID);
         addListener();
         resetValues();
@@ -111,17 +120,17 @@ btnAdd.addEventListener("click", function () {
 });
 
 function createLi(parent, id) {
-    var node = document.createElement("li");
-    var sp = document.createElement("span");
-    var ico = document.createElement("i");
-    var textnode = document.createTextNode(id);
-    sp.classList.add("trash")
-    ico.classList.add("fas");
+    var node = document.createElement("li"); //creating an li element
+    var sp = document.createElement("span"); //creating a span element
+    var ico = document.createElement("i"); //creating an li element
+    var textnode = document.createTextNode(id); //add id as a text
+    sp.classList.add("trash") //add class name to span
+    ico.classList.add("fas"); // add class to icon
     ico.classList.add("fa-trash-alt")
-    sp.appendChild(ico);
-    node.appendChild(sp);
+    sp.appendChild(ico); // append icon into the span
+    node.appendChild(sp); //append span into li
     node.appendChild(textnode);
-    parent.appendChild(node);
+    parent.appendChild(node); //append li into ul
 }
 
 function createTick(parent){
@@ -160,3 +169,20 @@ function deleteJson(market, day, id) {
     xhr.send(data);
 
 };
+
+//*************************************************************************//
+
+var headerDate = document.getElementsByClassName("date") //get h5 elements to add dates
+insertDates(headerDate); //executes function to insert dates
+
+//function to insert dates
+function insertDates(headerDate) {
+    var day = new Date(); //get today's date
+    day.setDate(day.getDate()-1) //set yesterday's date
+    for(var i=0; i<headerDate.length; i++){
+        day.setDate(day.getDate() + 1);
+        //add date in h5 in format "day/month"
+        headerDate[i].textContent = `${day.getDate()}/${day.getMonth()}`;
+    }
+}
+
