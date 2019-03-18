@@ -21,7 +21,7 @@ var server = http.createServer(function (req, res) {
             res.end();
         });
     } else if (req.url.match("\.png$")) {
-        fs.readFile("./assets/imgs/GO-logo.png", function (error, data) {
+        fs.readFile("./assets/imgs/GEM-logo.png", function (error, data) {
             res.writeHead(200, { "Content-Type": "image/png" });
             res.write(data);
             res.end();
@@ -38,7 +38,7 @@ var server = http.createServer(function (req, res) {
             data = chunk;
         });
         req.on('end', function () {
-            data = JSON.parse(data)
+            data = JSON.parse(data);
             writeJSON(data.market, data.day, data.id);
         })
         res.end();
@@ -48,7 +48,7 @@ var server = http.createServer(function (req, res) {
             data = chunk;
         });
         req.on('end', function () {
-            data = JSON.parse(data)
+            data = JSON.parse(data);
             deleteJSON(data.market, data.day, data.id);
         })
         res.end();
@@ -67,7 +67,7 @@ function writeJSON(market, day, id) {
         data = JSON.stringify(data, null, 4);
         fs.writeFile("./IDs.json", data, function () {
             console.log("data written");
-        })
+        });
     });
 };
 

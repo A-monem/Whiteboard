@@ -38,17 +38,24 @@ function loadJson(response) {
             let listOfIDs = document.getElementById(`${market}-${day}`);
             let materialID = response[market][day];
             //loop through IDs in each day
+            
+            if (materialID == ""){
+                listOfIDs.parentNode.classList.add("clear");
+                listOfIDs.parentNode.addEventListener("click", function(){
+                    var x = this.firstChild.nextSibling;
+                    x.classList.toggle("showTick");
+                })
+            }
             for (var k = 0; k < materialID.length; k++) {
-                if (typeof (materialID[k]) !== "undefined") {
+                if (typeof(materialID[k]) !== "undefined") {
                     createLi(listOfIDs, materialID[k]);
-                };
+                }
             };
         };
     };
     // run the function add listener
     addListener();
 };
-
 
 // add a listener to remove li when clicking the trash icon
 var addListener = function () {
@@ -66,6 +73,7 @@ var addListener = function () {
             setTimeout(function () {
                 _this.parentNode.parentNode.removeChild(_this.parentNode);
             }, 200)
+            location.reload();
         });
     };
 };
@@ -90,6 +98,7 @@ btnAdd.addEventListener("click", function () {
     if (idPart1.value !== "" && idPart2.value !== "" && idPart2.value !== "") {
         let materialID = `${idPart1.value.toUpperCase()}_${idPart2.value}_${idPart3.value.toUpperCase()}`;
         let marketDay = document.getElementById(`${market}-${day}`);
+        marketDay.parentNode.classList.remove("clear"); //remove the clear class 
         createLi(marketDay, materialID);
         addListener();
         resetValues();
@@ -113,6 +122,14 @@ function createLi(parent, id) {
     node.appendChild(sp);
     node.appendChild(textnode);
     parent.appendChild(node);
+}
+
+function createTick(parent){
+    var ico = document.createElement("i");
+    ico.classList.add("fas");
+    ico.classList.add("fa-check-circle");
+    parent.appendChild(ico);
+    console.log(parent);
 }
 
 function resetValues() {
