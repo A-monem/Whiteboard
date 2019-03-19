@@ -9,9 +9,7 @@
         "Thursday": [],
         "Friday": [],
         "Saturday": [],
-        "Sunday": [
-            "TEST_1_D"
-        ]
+        "Sunday": []
     },
     "GTV": {
         "Monday": [
@@ -31,9 +29,7 @@
             "TEST_2_A"
         ],
         "Tuesday": [],
-        "Wednesday": [
-            "TEST_1_D"
-        ],
+        "Wednesday": [],
         "Thursday": [],
         "Friday": [],
         "Saturday": [],
@@ -46,7 +42,9 @@
         ],
         "Tuesday": [],
         "Wednesday": [],
-        "Thursday": [],
+        "Thursday": [
+            "TEST_1_A"
+        ],
         "Friday": [],
         "Saturday": [
             "TEST_2_C"

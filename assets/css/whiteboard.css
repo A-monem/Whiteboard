@@ -23,6 +23,12 @@ body{
     position: relative;
 }
 
+.icon{
+    width: 90vw;
+    height: 5vh;
+    position: relative;
+}
+
 .logo-icon img{
     width: 6vw;
     height: 7vh;
@@ -31,12 +37,13 @@ body{
     left: 0;
 }
 
-.logo-icon i{
+.logo-icon i,.icon i{
 position: absolute;
 top: 40%;
 right: 0;
 color: rgb(224, 81, 81);
 }
+
 
 /* ******************************************************************************************* */
 
@@ -183,4 +190,6 @@ li:hover i{
 }
 
 
-
+.highlight{
+    background-color: rgb(212, 120, 120);
+}

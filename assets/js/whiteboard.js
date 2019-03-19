@@ -172,17 +172,32 @@ function deleteJson(market, day, id) {
 
 //*************************************************************************//
 
-var headerDate = document.getElementsByClassName("date") //get h5 elements to add dates
-insertDates(headerDate); //executes function to insert dates
+var headerDate1 = document.getElementsByClassName("week1-date") //get h5 elements to add dates
+
+insertWeekOneDates(headerDate1); //executes function to insert dates
 
 //function to insert dates
-function insertDates(headerDate) {
-    var day = new Date(); //get today's date
-    day.setDate(day.getDate()-1) //set yesterday's date
+function insertWeekOneDates(headerDate) {
     for(var i=0; i<headerDate.length; i++){
-        day.setDate(day.getDate() + 1);
-        //add date in h5 in format "day/month"
-        headerDate[i].textContent = `${day.getDate()}/${day.getMonth()}`;
+        var day = new Date(); //get today's date
+        var d = day.getDay() - 1;
+        var diff = 0;
+        var wDay = headerDate1[i].parentNode.innerText;
+        wDay = listDay.indexOf(wDay);
+        if (wDay == d){
+            headerDate[i].textContent = `${day.getDate()}/${day.getMonth()+1}`;
+            headerDate[i].parentNode.classList.add("highlight");
+        } else if (wDay > d){
+            diff = wDay - d;
+            day.setDate(day.getDate() + diff);
+            headerDate[i].textContent = `${day.getDate()}/${day.getMonth()+1}`;
+            headerDate[i].parentNode.classList.remove("highlight");
+        } else if (wDay < d){
+            diff = (7 - (d - wDay));
+            day.setDate(day.getDate() + diff);
+            headerDate[i].textContent = `${day.getDate()}/${day.getMonth()+1}`;
+            headerDate[i].parentNode.classList.remove("highlight");
+        }
     }
 }
 
