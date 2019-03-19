@@ -53,8 +53,8 @@
     },
     "STW": {
         "Monday": [
-            "TEST_1_A",
-            "TEST_2_A"
+            "TEST_2_A",
+            "TEST_3_C"
         ],
         "Tuesday": [],
         "Wednesday": [],
@@ -65,8 +65,8 @@
     },
     "NTD": {
         "Monday": [
-            "TEST_1_A",
-            "TEST_2_A"
+            "TEST_2_A",
+            "TOTHOU201_12_A"
         ],
         "Tuesday": [],
         "Wednesday": [],

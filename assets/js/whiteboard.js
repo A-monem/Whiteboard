@@ -71,8 +71,8 @@ var addListener = function () {
     for (var i = 0; i < btnDelete.length; i++) {
         btnDelete[i].addEventListener("click", function () {
             var li_ID = this.parentNode.textContent; //get-id from parent li
-            marketPattern = /^\w{3}/; //regular expression to extract market
-            dayPattern = /\w*$/; //regular expression to extract day
+            marketPattern = /^\w{3}/; //regular expression to extract market from parent ul
+            dayPattern = /\w*$/; //regular expression to extract day from parent ul
             var li_market = marketPattern.exec(this.parentNode.parentNode.id)[0];
             var li_day = dayPattern.exec(this.parentNode.parentNode.id)[0];
             deleteJson(li_market, li_day, li_ID); //delete id from IDs.json
@@ -82,10 +82,18 @@ var addListener = function () {
                 //remove li from parent ul
                 _this.parentNode.parentNode.removeChild(_this.parentNode);
             }, 200)
-            location.reload();//reload page to apply "clear" class from JSON
+            location.reload()     
         });
     };
-};
+
+    // for (var i = 0; i < btnDelete.length; i++) {
+    //     btnDelete[i].parentNode.addEventListener("click", function(){
+    //         this.classList.toggle("cross");
+            
+    //     })
+    // };
+    // // location.reload();//reload page to apply "clear" class from JSON
+}   
 
 // open add-id window
 btnOpen.addEventListener("click", function () {
@@ -100,7 +108,7 @@ btnCancel.addEventListener("click", function () {
 });
 
 
-// 
+// adding a new ID "li"
 btnAdd.addEventListener("click", function () {
     let day = selDay.value;
     let market = selMarket.value;
@@ -109,10 +117,10 @@ btnAdd.addEventListener("click", function () {
         let marketDay = document.getElementById(`${market}-${day}`); // grab ul of markte-day
         addClearTick(marketDay, false); //call addTickIcon function 
         createLi(marketDay, materialID);
-        addListener();
         resetValues();
         postJson(market, day, materialID);
         modal.style.display = "none";
+        addListener();
     }
     else {
         alert("Please insert a valid ID");
@@ -120,7 +128,7 @@ btnAdd.addEventListener("click", function () {
 });
 
 function createLi(parent, id) {
-    var node = document.createElement("li"); //creating an li element
+    var l = document.createElement("li"); //creating an li element
     var sp = document.createElement("span"); //creating a span element
     var ico = document.createElement("i"); //creating an li element
     var textnode = document.createTextNode(id); //add id as a text
@@ -128,9 +136,12 @@ function createLi(parent, id) {
     ico.classList.add("fas"); // add class to icon
     ico.classList.add("fa-trash-alt")
     sp.appendChild(ico); // append icon into the span
-    node.appendChild(sp); //append span into li
-    node.appendChild(textnode);
-    parent.appendChild(node); //append li into ul
+    l.appendChild(sp); //append span into li
+    l.appendChild(textnode);
+    l.addEventListener("click", function(){
+        this.classList.toggle("cross");
+    })
+    parent.appendChild(l); //append li into ul
 }
 
 function createTick(parent){
@@ -138,7 +149,7 @@ function createTick(parent){
     ico.classList.add("fas");
     ico.classList.add("fa-check-circle");
     parent.appendChild(ico);
-    console.log(parent);
+    
 }
 
 function resetValues() {

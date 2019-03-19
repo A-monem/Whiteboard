@@ -191,5 +191,9 @@ li:hover i{
 
 
 .highlight{
-    background-color: rgb(212, 120, 120);
+    background-color: rgb(211, 150, 150);
+}
+
+.cross{
+    text-decoration: line-through;
 }
