@@ -72,6 +72,7 @@ function writeJSON(market, day, id) {
 };
 
 function deleteJSON(market, day, id) {
+    console.log(id)
     fs.readFile("./IDs.json", function (error, data) {
         data = JSON.parse(data);
         (data[market][day]).splice((data[market][day]).indexOf(id), 1)

@@ -58,6 +58,7 @@ btnAdd.addEventListener("click", function () {
         let marketDay = document.getElementById(`${market}-${day}`); // grab ul of markte-day
         addClearTick(marketDay, false); //call addTickIcon function to remove the tick if present
         createLi(marketDay, materialID, checked);
+        addListener(); // add trash icon click listener to remove Li and id in JSON
         resetValues();
         postJson(market, day, `${materialID}_${liveStatus}`); //add YN or NN for live IDs
         modal.style.display = "none";
@@ -94,8 +95,8 @@ function createLi(parent, id, checked) {
     l.addEventListener("click", function () {
         this.classList.toggle("cross");
     })
-    addListener(); // add trash icon click listener to remove Li and id in JSON
     parent.appendChild(l); //append li into ul
+    
 }
 
 //function to load IDs from a json file
@@ -125,10 +126,11 @@ function loadJson(response) {
                         checked = false;
                     }
                     createLi(ulOfIDs, id, checked);
-                }
-            };
+                }   
+            };  
         };
     };
+    addListener()  
 };
 
 function addClearTick(ulObject, bool) {
@@ -149,11 +151,19 @@ function addListener() {
     //loop over trash spans to add a listener
     for (var i = 0; i < btnDelete.length; i++) {
         btnDelete[i].addEventListener("click", function () {
-            var li_ID = this.parentNode.textContent; //get-id from parent li
+            let liveStatus;
+            let li_ID = this.parentNode.textContent; //get-id from parent li
             const marketPattern = /^\w{3}/; //regular expression to extract market from parent ul
             const dayPattern = /\w*$/; //regular expression to extract day from parent ul
             var li_market = marketPattern.exec(this.parentNode.parentNode.id)[0];
             var li_day = dayPattern.exec(this.parentNode.parentNode.id)[0];
+            if (this.nextSibling.nextSibling){
+                liveStatus = "Y";
+            } else {
+                liveStatus = "N";
+            }
+            li_ID = `${li_ID}_${liveStatus}`
+            console.log(li_ID)
             deleteJson(li_market, li_day, li_ID); //delete id from IDs.json
             this.parentNode.classList.add("fadeOut");
             let _this = this;

@@ -1,22 +1,26 @@
 {
     "TCN": {
         "Monday": [
-            "TEST_1_A",
-            "TEST_1_A"
+            "TEST_1_A_Y",
+            "TEST_12_X_N"
         ],
         "Tuesday": [],
         "Wednesday": [],
         "Thursday": [],
-        "Friday": [],
+        "Friday": [
+            "TEST_10_A_N"
+        ],
         "Saturday": [],
-        "Sunday": []
+        "Sunday": [
+            "TEST_2_A_N"
+        ]
     },
     "GTV": {
         "Monday": [
-            "TEST_2_A"
+            "TEST_2_A_N"
         ],
         "Tuesday": [
-            "TEST_12_A"
+            "TEST_12_A_N"
         ],
         "Wednesday": [],
         "Thursday": [],
@@ -26,8 +30,7 @@
     },
     "QTQ": {
         "Monday": [
-            "TEST_1_A",
-            "TEST_2_A"
+            "TEST_2_A_N"
         ],
         "Tuesday": [],
         "Wednesday": [],
@@ -38,16 +41,13 @@
     },
     "NWS": {
         "Monday": [
-            "TEST_1_A",
-            "TEST_2_A"
+            "TEST_1_A_N"
         ],
         "Tuesday": [
             "TEST_12_A_N"
         ],
         "Wednesday": [],
-        "Thursday": [
-            "TEST_1_A"
-        ],
+        "Thursday": [],
         "Friday": [],
         "Saturday": [],
         "Sunday": []
@@ -60,23 +60,19 @@
         "Tuesday": [],
         "Wednesday": [],
         "Thursday": [],
-        "Friday": [
-            "TEST_1_A_N"
-        ],
-        "Saturday": [
-            "TEST_2_B_Y"
-        ],
+        "Friday": [],
+        "Saturday": [],
         "Sunday": []
     },
     "NTD": {
         "Monday": [
-            "TEST_2_A"
+            "TEST_2_A_N"
         ],
         "Tuesday": [],
         "Wednesday": [],
         "Thursday": [],
         "Friday": [
-            "TEST101_301_E"
+            "TEST101_301_E_Y"
         ],
         "Saturday": [],
         "Sunday": []
