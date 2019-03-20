@@ -1,8 +1,8 @@
 {
     "TCN": {
         "Monday": [
-            "TEST_1_A",
-            "TEST_1_C"
+            "TEST_1_A_PL",
+            "TEST_1_A"
         ],
         "Tuesday": [],
         "Wednesday": [],
@@ -13,10 +13,11 @@
     },
     "GTV": {
         "Monday": [
-            "TEST_2_A",
             "TEST_2_A"
         ],
-        "Tuesday": [],
+        "Tuesday": [
+            "TEST_12_A"
+        ],
         "Wednesday": [],
         "Thursday": [],
         "Friday": [],
@@ -46,9 +47,7 @@
             "TEST_1_A"
         ],
         "Friday": [],
-        "Saturday": [
-            "TEST_2_C"
-        ],
+        "Saturday": [],
         "Sunday": []
     },
     "STW": {
@@ -60,13 +59,14 @@
         "Wednesday": [],
         "Thursday": [],
         "Friday": [],
-        "Saturday": [],
+        "Saturday": [
+            "TEST_2_B "
+        ],
         "Sunday": []
     },
     "NTD": {
         "Monday": [
-            "TEST_2_A",
-            "TOTHOU201_12_A"
+            "TEST_2_A"
         ],
         "Tuesday": [],
         "Wednesday": [],
