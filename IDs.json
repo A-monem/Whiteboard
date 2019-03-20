@@ -1,7 +1,7 @@
 {
     "TCN": {
         "Monday": [
-            "TEST_1_A_PL",
+            "TEST_1_A",
             "TEST_1_A"
         ],
         "Tuesday": [],
@@ -41,7 +41,9 @@
             "TEST_1_A",
             "TEST_2_A"
         ],
-        "Tuesday": [],
+        "Tuesday": [
+            "TEST_12_A_N"
+        ],
         "Wednesday": [],
         "Thursday": [
             "TEST_1_A"
@@ -52,15 +54,17 @@
     },
     "STW": {
         "Monday": [
-            "TEST_2_A",
-            "TEST_3_C"
+            "TEST_2_A_N",
+            "TEST_3_C_Y"
         ],
         "Tuesday": [],
         "Wednesday": [],
         "Thursday": [],
-        "Friday": [],
+        "Friday": [
+            "TEST_1_A_N"
+        ],
         "Saturday": [
-            "TEST_2_B "
+            "TEST_2_B_Y"
         ],
         "Sunday": []
     },
